@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scribe — Local Meeting Transcription for Mac</title>
+<meta name="description" content="Scribe is a free, local-first macOS menu-bar app that records meeting audio and transcribes it entirely on your Mac. No cloud, no accounts, no subscriptions.">
+<style>
+  :root {
+    --orange: #DF552F;
+    --orange-light: #F08A5C;
+    --ink: #1d2129;
+    --paper: #faf8f6;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px 64px; }
+  header { text-align: center; margin-bottom: 40px; }
+  header img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 12px 32px rgba(223, 85, 47, .25); }
+  h1 { font-size: 2.4rem; margin: 20px 0 6px; letter-spacing: -0.02em; }
+  .tagline { font-size: 1.15rem; color: var(--muted); max-width: 480px; margin: 0 auto; }
+  .cta { text-align: center; margin: 32px 0 12px; }
+  .btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 14px 34px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(223, 85, 47, .35);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(223, 85, 47, .45); }
+  .fineprint { text-align: center; color: var(--muted); font-size: .85rem; margin-bottom: 40px; }
+  .fineprint a { color: var(--orange); }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 8px 0 40px; }
+  @media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+  .card {
+    background: #fff;
+    border: 1px solid #eee6e0;
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--orange); }
+  .card p { font-size: .92rem; color: #444; }
+  .steps { background: #fff; border: 1px solid #eee6e0; border-radius: 14px; padding: 22px; margin-bottom: 40px; }
+  .steps h2 { font-size: 1.15rem; margin-bottom: 12px; }
+  .steps ol { padding-left: 22px; font-size: .95rem; }
+  .steps li { margin-bottom: 8px; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; }
+  footer a { color: var(--orange); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon.png" alt="Scribe app icon">
+    <h1>Scribe</h1>
+    <p class="tagline">Local, private meeting transcription for your Mac. Record any meeting — Zoom or in-person — and get a plain-text transcript. Nothing ever leaves your machine.</p>
+  </header>
+
+  <div class="cta">
+    <a class="btn" href="https://github.com/brandonjspencer/scribe-releases/releases/latest/download/Scribe.dmg">Download Scribe for macOS</a>
+  </div>
+  <p class="fineprint">
+    Free · macOS 13+ · Apple Silicon · Notarized by Apple<br>
+    <a href="https://github.com/brandonjspencer/scribe-releases/releases">All releases &amp; notes</a>
+  </p>
+
+  <div class="features">
+    <div class="card">
+      <h3>100% local</h3>
+      <p>Transcription runs on your Mac with whisper.cpp and Metal acceleration. No cloud, no account, no subscription — ever.</p>
+    </div>
+    <div class="card">
+      <h3>Meeting-aware</h3>
+      <p>Detects when a Zoom meeting starts or ends and offers to start or stop recording, so you never forget to capture one.</p>
+    </div>
+    <div class="card">
+      <h3>Transparent by design</h3>
+      <p>Optional spoken announcements tell participants when recording starts and stops, and the menu-bar icon pulses red while capturing.</p>
+    </div>
+    <div class="card">
+      <h3>Minutes with Claude</h3>
+      <p>Optionally turn any transcript into actionable meeting minutes with the bundled Claude Code skill — one click, fully on your terms.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <h2>Getting started</h2>
+    <ol>
+      <li>Download the DMG and drag <strong>Scribe</strong> into <strong>Applications</strong>.</li>
+      <li>Launch it — Scribe lives in your <strong>menu bar</strong> (look for the waveform icon near the clock).</li>
+      <li>Follow the welcome guide to grant Screen &amp; System Audio Recording and Microphone permissions.</li>
+      <li>Click <strong>Start Recording</strong> in a meeting. Transcripts land in your chosen folder as plain text.</li>
+    </ol>
+  </div>
+
+  <footer>
+    Scribe updates itself automatically via <a href="appcast.xml">a signed update feed</a>.<br>
+    Everything is processed on-device. Recording conversations may require participant consent where you live — announce it.
+  </footer>
+</div>
+</body>
+</html>
