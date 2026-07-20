@@ -1,11 +1,16 @@
-# Scribe 0.4.1
+# Scribe 0.5.0
 
-Polish on top of the big 0.4.0 release.
+## Built-in Minutes Reader
 
-## Improvements
+Read your generated meeting minutes without leaving Scribe. Open it from the menu bar (**Read Meeting Minutes…**) or Settings → Files.
 
-- The welcome guide's tour now leads with Scribe's actual menu-bar waveform icon, and includes a direct "Choose your transcripts folder…" link.
-- Your transcripts folder now gets Scribe's branded orange folder icon in Finder, so it's easy to spot.
-- Release pipeline hardening behind the scenes.
+- **Two-tab sidebar** — the open document's table of contents, or a chronological log of every minutes file grouped by day ("Today", "Yesterday", …). The TOC follows your reading position as you scroll.
+- **Your folder, your choice** — defaults to `Transcripts/Minutes`, re-point it at any folder of Markdown files.
+- **Themes** — Light, Dark, or System (follows your Mac live).
+- **Reading comforts** — Inter typography, centered reading column, a subtle progress bar, zoom (⌘− / ⌘= / ⌘0), and word count + reading time in the status bar.
+- **PDF export** (⇧⌘E) and quick file open (⌘O).
+- **Private by design** — the reader is fully offline; links open in your browser and nothing leaves your Mac.
 
-_See 0.4.0 notes for the headline features: in-process Metal-accelerated transcription, silence-aligned chunking, auto-updates, and onboarding._
+## Also
+
+- Ships the Inter typeface (SIL Open Font License).
