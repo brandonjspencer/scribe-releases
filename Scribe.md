@@ -1,16 +1,14 @@
-# Scribe 0.5.0
+# Scribe 0.5.1
 
-## Built-in Minutes Reader
+## Smarter meeting-minutes skill
 
-Read your generated meeting minutes without leaving Scribe. Open it from the menu bar (**Read Meeting Minutes…**) or Settings → Files.
+The bundled Claude Code skill that turns transcripts into minutes got a major upgrade:
 
-- **Two-tab sidebar** — the open document's table of contents, or a chronological log of every minutes file grouped by day ("Today", "Yesterday", …). The TOC follows your reading position as you scroll.
-- **Your folder, your choice** — defaults to `Transcripts/Minutes`, re-point it at any folder of Markdown files.
-- **Themes** — Light, Dark, or System (follows your Mac live).
-- **Reading comforts** — Inter typography, centered reading column, a subtle progress bar, zoom (⌘− / ⌘= / ⌘0), and word count + reading time in the status bar.
-- **PDF export** (⇧⌘E) and quick file open (⌘O).
-- **Private by design** — the reader is fully offline; links open in your browser and nothing leaves your Mac.
+- **Notes organized by topic** — discussion notes are anchored on your calendar event's agenda, with decisions and open questions captured where they arise.
+- **Meeting-type aware** — 1:1s, team syncs, planning sessions, reviews, customer calls, and interviews each get the right emphasis.
+- **"Since last time"** — recurring meetings link the prior notes and track which action items carried over, landed, or slipped.
+- **Reliable re-runs** — analyzed/posted tracking is keyed on the recording timestamp, so renamed minutes files never cause duplicates.
+- **Cleaner output** — a built-in formatting quality pass: consistent structure, no emojis, no raw transcript fragments.
+- **ASR glossary** — a fill-in-your-own glossary teaches the skill your product names and acronyms so Whisper mis-hearings get corrected.
 
-## Also
-
-- Ships the Inter typeface (SIL Open Font License).
+Grab the refreshed skill via Settings → Meeting Minutes Skill → **Save Meeting Minutes Skill…**, or just use **Generate Minutes** — the app uses the new version automatically.
