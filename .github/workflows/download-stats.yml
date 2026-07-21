@@ -1,0 +1,47 @@
+name: Snapshot download stats
+
+# GitHub only exposes cumulative per-asset download counts. Snapshotting them daily
+# into stats/downloads.csv turns them into a time series (downloads per day = today's
+# row minus yesterday's). Scribe-web.dmg = fresh site downloads; Scribe.dmg = Sparkle
+# updates (mixed for releases before v0.5.1, which had a single asset).
+
+on:
+  schedule:
+    - cron: "0 15 * * *" # daily, 15:00 UTC ≈ 8 AM Pacific
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append today's counts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p stats
+          CSV=stats/downloads.csv
+          [ -f "$CSV" ] || echo "date,release,asset,downloads" > "$CSV"
+          TODAY=$(date -u +%F)
+          if grep -q "^$TODAY," "$CSV"; then
+            echo "Already snapshotted today — nothing to do."
+            exit 0
+          fi
+          gh api "repos/${GITHUB_REPOSITORY}/releases" --paginate \
+            --jq '.[] | .tag_name as $t | .assets[] | [$t, .name, (.download_count|tostring)] | join(",")' \
+            | sort \
+            | while IFS= read -r line; do echo "$TODAY,$line" >> "$CSV"; done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$CSV"
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "stats: download snapshot $TODAY"
+            git push
+          fi
