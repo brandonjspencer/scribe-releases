@@ -1,11 +1,13 @@
-# Scribe 0.6.0
+# Scribe 0.7.0
 
-## Zoom chat disclosure (opt-in)
+## On-screen recording badge
 
-Scribe can now post a written notice into the meeting's group chat the moment recording starts — so participants see the disclosure in writing, not just hear it.
+While recording, Scribe now floats a small pill in the bottom-right corner — a red dot, "Scribe," and a live waveform that moves with the audio. Since a screen share captures everything on your display, this disclosure travels right along with your presentation, so participants see it without you having to say anything.
 
-- **Off by default.** Turn it on in Settings → Recording Options.
-- **Editable message**, defaulting to: *"Scribe Notification: this meeting is being transcribed locally."*
-- **Send Test Message** button lets you try it in a live meeting before relying on it.
-- Requires **Accessibility permission** — Scribe types into Zoom's own chat box, since there's no Zoom API for this. Recording and transcription never need that permission; it's used only for this optional feature.
-- Fails silently if Zoom's chat can't be found (no meeting, permission not granted, etc.) — a recording never depends on this working.
+- Needs **no permissions at all**.
+- On by default — turn it off anytime in Settings → Recording Options.
+- Turns orange and flattens while paused.
+
+## Never lose track of Scribe
+
+If your menu bar gets crowded, macOS can silently hide Scribe's icon — which used to mean no way to stop a recording or quit the app. Now, opening Scribe again (from Spotlight, or your Quick Entry shortcut) always shows a panel with live recording status, **Pause**, **Stop Recording**, and **Quit Scribe** — and quitting always finishes the current recording cleanly first.
