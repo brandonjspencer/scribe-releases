@@ -1,7 +1,4 @@
-## What's new in 0.8.0
+## What's new in 0.9.0
 
-- **Active speaker tracking (Experimental)** — when enabled, Scribe reads Zoom's own "active speaker" indicator and tags transcript lines with who was talking, instead of just "System"/"Mic". Attribution is confidence-gated: a line only gets a name when a speaker was clearly known for its entire span — fast-changing or ambiguous stretches fall back to the plain source label rather than guessing.
-- **"Multiple people are in the room"** — a per-recording option, shown when active speaker tracking is on, that keeps microphone audio labeled "Mic" instead of a Zoom participant's name. Useful when more than one person shares a local microphone, since Zoom's active-speaker signal only reflects which Zoom tile is talking.
-- **Zoom window snapshot button** — a camera icon next to Pause/Resume captures a still image of Zoom's meeting window and saves it alongside the transcript, with a reference line noting when it was taken. Requires macOS 14 or later.
-
-Both Zoom features reuse the existing Accessibility/Screen Recording permissions already used for the optional Zoom chat notice — no new permission prompts.
+- **Camera Watermark (Experimental, Stage 1)** — a new, opt-in virtual camera ("Scribe Camera") you can select in Zoom/Meet/Teams. This stage is bare passthrough only (no recording badge baked in yet); Stage 2 will add the badge. Requires installing a system extension — on a company-managed Mac, endpoint security software may block activation, and there's no in-app workaround for that.
+- **Settings cleanup** — several Recording Options toggles (Announce recording events, Show on-screen badge, Post Zoom chat notice, Track active speaker) now tuck their explanations behind an "ⓘ" icon instead of always-visible text, so the section is easier to scan.
