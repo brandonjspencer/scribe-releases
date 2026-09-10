@@ -1,5 +1,11 @@
-## Scribe 0.11.0
+## Scribe 0.12.0
 
-**Zoom chat notice works again on Zoom 7.1.5.** Zoom's latest update relabelled its chat composer, which made the written recording disclosure fail with "chat UI not found". Scribe now finds the composer regardless of its label, with a fallback if Zoom renames it again.
+**Answers on your Mac.** Ask your meetings can now answer entirely on-device: with **Apple Intelligence** on macOS 26, or with any chat model in a local **Ollama** (`ollama pull llama3.2`). Pick the engine from the Answers menu in the footer. Claude Code remains the strongest option and the only one that sends anything off the Mac. When you first turn answers on, Scribe suggests an on-device engine if one is available.
 
-**Answers in Ask your meetings.** Press Return (or click *Answer*) and Scribe asks Claude Code for a short answer built only from the top matching passages, with `[n]` citations you can click to open the exact passage in the reader or transcript viewer. Off by default: the first time, the window explains that the question and the top 12 passages are sent to Claude and nothing else leaves the Mac. Tools are disabled for the run, so Claude reads only what Scribe hands it. Needs the Claude Code CLI, like minutes generation.
+**Answers stream in.** Whatever engine you pick, the answer appears as it is written, and *Cancel* stops it.
+
+**"This meeting" scope.** While a recording is running, a *This meeting* chip searches only the transcript being written — "what did she just say" mid-meeting. The live transcript is re-indexed when you switch to it and every 45 seconds after.
+
+**Better answer context.** The passages sent to the answer engine are spread across meetings (at most four from any one file) and transcript passages carry the following moments, so a sentence cut at a window boundary arrives complete.
+
+**Shortcuts.** A global shortcut for Ask Your Meetings lives in Settings → Quick Entry Shortcut. In the Minutes Reader, ⇧⌘F jumps to the search across all minutes files.
