@@ -3,14 +3,14 @@
     <channel>
         <title>Scribe</title>
         <item>
-            <title>0.12.0</title>
-            <pubDate>Thu, 10 Sep 2026 15:54:56 -0700</pubDate>
-            <sparkle:version>63</sparkle:version>
-            <sparkle:shortVersionString>0.12.0</sparkle:shortVersionString>
+            <title>0.13.0</title>
+            <pubDate>Thu, 10 Sep 2026 16:23:50 -0700</pubDate>
+            <sparkle:version>64</sparkle:version>
+            <sparkle:shortVersionString>0.13.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <sparkle:releaseNotesLink>https://brandonjspencer.github.io/scribe-releases/Scribe.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/brandonjspencer/scribe-releases/releases/download/v0.12.0/Scribe.dmg" length="146065449" type="application/octet-stream" sparkle:edSignature="QE7HNqAPRmHqLIr18qdMIg8IMXY1Dege7iuwjckTssukCcUnREYN2n5RMLlu72iZUCduDhROvUigg3pRoVOrDA=="/>
+            <enclosure url="https://github.com/brandonjspencer/scribe-releases/releases/download/v0.13.0/Scribe.dmg" length="146552495" type="application/octet-stream" sparkle:edSignature="w/0WxyCkYnA1pDax4buyu+9v0crk02Hq6qTu03y0YCKqqunTVXBmnctpjgL0FduOsRHuF/uzkDv5kccYsIrxDg=="/>
         </item>
     </channel>
 </rss>

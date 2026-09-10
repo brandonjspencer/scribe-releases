@@ -1,11 +1,7 @@
-## Scribe 0.12.0
+## Scribe 0.13.0
 
-**Answers on your Mac.** Ask your meetings can now answer entirely on-device: with **Apple Intelligence** on macOS 26, or with any chat model in a local **Ollama** (`ollama pull llama3.2`). Pick the engine from the Answers menu in the footer. Claude Code remains the strongest option and the only one that sends anything off the Mac. When you first turn answers on, Scribe suggests an on-device engine if one is available.
+**Claude Desktop extension.** Settings → Meeting Minutes now has *Install Claude Desktop Extension…*. One click opens the extension in Claude Desktop, which asks where your transcripts and minutes folders are (leave them blank to use Scribe's own), plus an optional Slack channel and calendar, and installs it. No Node, no Python, no config files.
 
-**Answers stream in.** Whatever engine you pick, the answer appears as it is written, and *Cancel* stops it.
+Claude Desktop then gets tools to search across every transcript and minutes file using Scribe's index, read them, find meetings that don't have minutes yet, and save minutes into your folder where Scribe's reader and search pick them up. Three commands carry the meeting-minutes workflow: `/write_minutes`, `/catch_up`, and `/weekly_digest`, configured for you rather than by editing a skill file.
 
-**"This meeting" scope.** While a recording is running, a *This meeting* chip searches only the transcript being written — "what did she just say" mid-meeting. The live transcript is re-indexed when you switch to it and every 45 seconds after.
-
-**Better answer context.** The passages sent to the answer engine are spread across meetings (at most four from any one file) and transcript passages carry the following moments, so a sentence cut at a window boundary arrives complete.
-
-**Shortcuts.** A global shortcut for Ask Your Meetings lives in Settings → Quick Entry Shortcut. In the Minutes Reader, ⇧⌘F jumps to the search across all minutes files.
+The extension reads and writes only the two folders you choose. The Claude Code skill export remains available alongside it.
