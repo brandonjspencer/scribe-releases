@@ -1,5 +1,5 @@
-## Scribe 0.13.2
+## Scribe 0.13.3
 
-**Extension in the welcome guide.** First launch now ends with an optional step to install the Scribe Meetings extension for Claude Desktop — the same one-click install as Settings → Meeting Minutes. It never blocks getting started, and if Claude Desktop isn't installed it points you to Settings for later.
+**Tidier Meeting Minutes settings.** The Claude Desktop extension description is now one line; the details about folders, Slack, calendar, and what the extension can access live in the Install button's tooltip.
 
-No other changes since 0.13.1.
+No other changes since 0.13.2.
