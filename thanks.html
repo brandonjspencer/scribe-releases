@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanks — Scribe</title>
+<style>
+  :root { color-scheme: light dark; --accent: #df552f; --fg: #1c1c1e; --muted: #6e6e73; --bg: #ffffff; --card: #fff; --card-border: #eee6e0; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e8e8ea; --muted: #9a9aa0; --bg: #1b1b1d; --card: #242426; --card-border: #38383a; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Helvetica, Arial, sans-serif; }
+  main { max-width: 36em; margin: 0 auto; padding: 64px 24px 96px; text-align: center; }
+  h1 { font-size: 1.9rem; letter-spacing: -0.02em; margin: 0 0 0.4em; }
+  p { color: var(--fg); }
+  .muted { color: var(--muted); font-size: 0.95rem; }
+  a { color: var(--accent); }
+  .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 24px; margin: 28px 0; text-align: left; }
+  .btn { display: inline-block; background: var(--accent); color: #fff !important; font-weight: 600; padding: 12px 22px; border-radius: 10px; text-decoration: none; margin-top: 6px; }
+  code { background: rgba(128,128,128,0.15); padding: 2px 6px; border-radius: 5px; font-size: 0.9em; }
+  hr { border: 0; border-top: 1px solid rgba(128,128,128,0.25); margin: 2.5em 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Thanks — Scribe is unlocked</h1>
+  <p>Your receipt and license key are on their way from Lemon Squeezy by email.</p>
+
+  <div class="card" id="withKey" hidden>
+    <p>Click below to activate this key directly in Scribe (the app must already be installed and
+    running):</p>
+    <p style="text-align:center"><a class="btn" id="activateLink" href="#">Open in Scribe</a></p>
+    <p class="muted" style="text-align:center">Key: <code id="keyText"></code></p>
+  </div>
+
+  <div class="card" id="withoutKey">
+    <p><strong>Next step:</strong> open the receipt email from Lemon Squeezy and click
+    <strong>"Open in Scribe"</strong> — it activates the license automatically.</p>
+    <p>No email yet, or activating another Mac? Open Scribe, go to
+    <strong>Settings → License</strong>, choose <strong>"Enter a license key…"</strong>, and paste
+    the key from the receipt.</p>
+  </div>
+
+  <p class="muted">Don't have Scribe on this Mac yet? <a href="./">Download it here</a> — the same
+  license works on up to 3 Macs.</p>
+
+  <hr>
+  <p class="muted"><a href="./">Back to Scribe</a> · <a href="eula.html">License terms</a></p>
+</main>
+<script>
+  // If Lemon Squeezy (or a manual test link) appends ?key=..., offer a direct scribe://activate
+  // link instead of the generic "check your email" instructions. Not relied on as the primary
+  // path — the email's own "Open in Scribe" link is what most people will actually use.
+  const params = new URLSearchParams(location.search);
+  const key = params.get("key");
+  if (key) {
+    document.getElementById("keyText").textContent = key;
+    document.getElementById("activateLink").href = "scribe://activate?key=" + encodeURIComponent(key);
+    document.getElementById("withKey").hidden = false;
+    document.getElementById("withoutKey").hidden = true;
+  }
+</script>
+</body>
+</html>

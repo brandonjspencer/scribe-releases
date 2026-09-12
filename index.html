@@ -139,6 +139,10 @@
   .steps h2 { font-size: 1.15rem; margin-bottom: 12px; }
   .steps ol { padding-left: 22px; font-size: .95rem; }
   .steps li { margin-bottom: 8px; }
+  .faq dt { font-weight: 600; margin-top: 14px; font-size: .95rem; }
+  .faq dt:first-child { margin-top: 0; }
+  .faq dd { margin: 4px 0 0; font-size: .92rem; color: #444; }
+  .pricing-cta { display: inline-block; margin-top: 10px; font-size: .9rem; }
   footer { text-align: center; color: var(--muted); font-size: .85rem; }
   footer a { color: var(--orange); }
 </style>
@@ -192,6 +196,40 @@
     </ol>
   </div>
 
+  <div class="steps" id="pricing">
+    <h2>Pricing</h2>
+    <p>Scribe is free to download and free for your first <strong>20 meetings</strong> — full
+    features, no trial clock, no credit card up front. Starting with <strong>Scribe 1.0</strong>,
+    unlocking it after that is a <strong>one-time payment of $19.99</strong> for up to 3 Macs. No
+    subscription, and every point release of the version you bought stays free forever. Buy or
+    manage a license from <strong>Settings → License</strong> inside the app.</p>
+    <a class="pricing-cta" href="eula.html">License terms</a>
+  </div>
+
+  <div class="steps">
+    <h2>Frequently asked</h2>
+    <dl class="faq">
+      <dt>What counts as one of the 20 free meetings?</dt>
+      <dd>Any completed recording of 2 minutes or longer. Shorter test recordings are free and
+      don't count, and a recording already in progress is never interrupted by the count.</dd>
+
+      <dt>Do I keep what I already recorded if I don't buy a license?</dt>
+      <dd>Yes. Every transcript, your minutes, the Minutes Reader, Ask your meetings, search, and
+      export all keep working with no license. Only starting a <em>new</em> recording is gated.</dd>
+
+      <dt>How many Macs can I use one license on?</dt>
+      <dd>Up to 3 at a time. Deactivate one from Settings → License to free a slot for another.</dd>
+
+      <dt>Do I pay again for updates?</dt>
+      <dd>No. Every point release of the major version you bought (for example, all of Scribe 1.x)
+      is a free update forever, delivered automatically.</dd>
+
+      <dt>What if I was already using Scribe before it had a license?</dt>
+      <dd>You're grandfathered in automatically — recording stays unlimited on Macs where Scribe
+      already had transcripts before the license shipped. Nothing to do, no code needed.</dd>
+    </dl>
+  </div>
+
   <footer>
     Scribe updates itself automatically via <a href="appcast.xml">a signed update feed</a>.<br>
     Everything is processed on-device. Recording conversations may require participant consent where you live — announce it.
@@ -203,6 +241,6 @@
 <script data-goatcounter="https://scribe.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
-<p style="text-align:center;font-size:0.85rem;opacity:0.7;margin:32px 0 48px"><a href="privacy.html" style="color:inherit">Privacy Policy</a></p>
+<p style="text-align:center;font-size:0.85rem;opacity:0.7;margin:32px 0 48px"><a href="#pricing" style="color:inherit">Pricing</a> · <a href="privacy.html" style="color:inherit">Privacy Policy</a> · <a href="eula.html" style="color:inherit">License</a></p>
 </body>
 </html>
