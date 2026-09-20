@@ -1,7 +1,4 @@
-## Scribe 0.14.0
+## Scribe 0.15.0
 
-**Ready for Scribe Remote, the iPhone app coming soon to the App Store.** Settings → iPhone Remote prepares this Mac for the companion app: once paired with a six-digit code, your phone can start, pause, resume, stop, snapshot, or mark a recording, follow the live transcript, and ask the Mac to check for updates. It is off by default and does nothing until you turn it on. It uses peer-to-peer Wi-Fi and Bluetooth, so it works even where office Wi-Fi blocks device discovery. macOS asks for Local Network permission the first time.
-
-**Screen Recording permission always offers Open Settings.** macOS shows its Screen Recording prompt only once per app; when Request can't prompt again, the Permissions row and the welcome guide now take you straight to the right System Settings pane.
-
-Under the hood, the transcript format, search chunking, checklist logic and the remote protocol moved into a shared package used by both the Mac app and the upcoming iPhone app.
+- **Fixed a crash that could drop a recording.** The floating "transcribing" badge's waveform meter had a race that could crash the app 30–90 seconds into a recording, losing everything captured so far. It's fixed.
+- **You can now buy a license.** Settings → License has a real, working "Unlock Scribe — $9.99" one-time purchase. Recording isn't gated by the free-meeting count yet — this just makes buying possible for anyone who wants to support the app early.
