@@ -1,4 +1,3 @@
-## Scribe 0.15.2
+## Scribe 0.15.3
 
-- Fixed a bug where a recording could silently capture nothing and later crash. It happened when the microphone in use had changed since the previous recording — for example, switching between a Bluetooth headset and the built-in mic.
-- If the microphone can't be started, or stops working mid-meeting, Scribe now keeps recording system audio and tells you, instead of losing the meeting.
+- Fixed the microphone failing to start — or dropping out a few seconds into a recording — with Bluetooth earbuds and headsets. Scribe now rides through the headset's switch into call mode instead of losing the mic, and recovers automatically if the device disconnects.
