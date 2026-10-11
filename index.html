@@ -188,7 +188,7 @@
 
   /* pinned how-it-works */
   .pin-wrap { height: 340vh; position: relative; margin-top: 200px; }
-  .pin { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 1fr 1.25fr; align-items: center; gap: 48px; max-width: 1180px; margin: 0 auto; padding: 60px 24px 0; }
+  .pin { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: .85fr 1.45fr; align-items: center; gap: 40px; max-width: 1180px; margin: 0 auto; padding: 60px 24px 0; }
   .pin-text { position: relative; min-height: 260px; }
   .pin-step { position: absolute; inset: 0; opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); pointer-events: none; }
   .pin-step.active { opacity: 1; transform: none; }
@@ -196,11 +196,13 @@
   .pin-step h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
   .pin-step p { font-size: 1.2rem; color: var(--ink-2); margin-top: 18px; max-width: 420px; line-height: 1.45; }
   .pin-step .n { font-family: var(--mono); color: var(--orange-2); font-size: 14px; margin-bottom: 18px; display: block; }
-  .pin-visual { position: relative; height: min(70vh, 640px); }
+  .pin-visual { position: relative; height: min(78vh, 760px); }
   .pin-panel { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; transform: translateY(40px) scale(.94); transition: opacity .7s var(--ease), transform .7s var(--ease); }
   .pin-panel.active { opacity: 1; transform: none; }
   .pin-panel.past { opacity: 0; transform: translateY(-40px) scale(.96); }
   .pin-panel img { max-height: 100%; width: auto; max-width: 100%; }
+  .pin-panel[data-step="2"] { place-items: center start; }
+  .pin-panel[data-step="2"] img { width: 152%; max-width: none; max-height: none; }
   .pin-panel .transcript { margin: 0; width: min(640px, 100%); }
   .progress { position: absolute; left: 24px; bottom: 40px; display: flex; gap: 8px; }
   .progress i { width: 36px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.14); overflow: hidden; position: relative; }
