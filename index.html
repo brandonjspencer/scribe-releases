@@ -230,7 +230,7 @@
   .frame .desk { position: absolute; inset: 0; background: radial-gradient(600px 300px at 85% 100%, rgba(223,85,47,.18), transparent 70%); }
   .frame .menubar { height: 30px; border-radius: 10px 10px 0 0; background: rgba(255,255,255,.05); border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 0 14px; position: relative; }
   .frame .menubar i { width: 14px; height: 10px; background: rgba(255,255,255,.22); border-radius: 2px; }
-  .frame .menubar i.wave { width: 16px; height: 12px; background: linear-gradient(90deg, var(--orange-2) 0 2px, transparent 2px 4px, var(--orange-2) 4px 6px, transparent 6px 8px, var(--orange-2) 8px 10px, transparent 10px 12px, var(--orange-2) 12px 14px, transparent 14px); }
+  .frame .menubar i.wave { width: 16px; height: 16px; border-radius: 0; background: var(--ink); -webkit-mask: url(assets/menubar-icon.png) center / contain no-repeat; mask: url(assets/menubar-icon.png) center / contain no-repeat; }
   .card-pop { position: absolute; top: 48px; right: 40px; width: min(460px, 74%); opacity: var(--p); transform: translateY(calc((1 - var(--p)) * -40px)) scale(calc(.94 + var(--p) * .06)); transform-origin: top right; }
   .frame .doc { position: absolute; left: 24px; right: 24px; top: 54px; bottom: 0; border-radius: 12px 12px 0 0; background: rgba(255,255,255,.035); border: 1px solid var(--line); border-bottom: 0; }
   .frame .doc::before, .frame .doc::after { content: ""; position: absolute; left: 28px; height: 10px; border-radius: 5px; background: rgba(255,255,255,.08); }
