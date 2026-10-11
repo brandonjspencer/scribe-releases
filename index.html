@@ -244,12 +244,20 @@
   .phone-shell::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); pointer-events: none; z-index: 2; }
   .phone-shell .screen { position: relative; border-radius: inherit; overflow: hidden; background: #000; }
   .phone-shell img { width: 100%; height: auto; display: block; }
-  .phone-shell .home { position: absolute; inset: 0; opacity: 0; transform: scale(1.04); }
+  .phone-shell .home, .phone-shell .pair, .phone-shell .ready { position: absolute; inset: 0; opacity: 0; }
+  .phone-shell .home { transform: scale(1.04); }
+  .phone-shell .pair { transform: translateY(6%); }
+  .phone-shell .ready { transform: scale(1.03); }
+  .phone-shell .tap { position: absolute; left: 50%; top: 28%; width: 14%; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%) scale(.3); opacity: 0; background: rgba(255,255,255,.22); box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
   .in .phone-shell .home { animation: launch 1.1s var(--ease) 1.6s forwards; }
   .in .phone-shell .splash { animation: splashout 1.1s var(--ease) 1.6s forwards; }
+  .in .phone-shell .tap { animation: tapring .9s ease-out 3.9s forwards; }
+  .in .phone-shell .pair { animation: launch .7s var(--ease) 4.7s forwards; }
+  .in .phone-shell .ready { animation: launch .8s var(--ease) 7.6s forwards; }
   @keyframes launch { to { opacity: 1; transform: none; } }
   @keyframes splashout { to { opacity: 0; transform: scale(1.06); } }
-  html.static .phone-shell .home { opacity: 1; transform: none; }
+  @keyframes tapring { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.3); } 25% { opacity: 1; transform: translate(-50%, -50%) scale(.8); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.8); } }
+  html.static .phone-shell .ready { opacity: 1; transform: none; }
   .phone-shell .btn-side { position: absolute; right: -6px; top: 24%; width: 3px; height: 11%; background: #2a2a2e; border-radius: 2px; }
 
   /* transparency trio */
@@ -369,6 +377,7 @@
     [data-scroll] { --p: 1 !important; }
     .stage-inner { transform: none !important; }
     .layer.ask .answer, .layer .over { opacity: 1 !important; clip-path: none !important; animation: none !important; }
+    .phone-shell .ready { opacity: 1 !important; transform: none !important; }
   }
 </style>
 </head>
@@ -562,7 +571,7 @@
         <div class="menubar"><i class="wave"></i><i></i><i></i><i></i></div>
         <div class="doc"></div>
         <img class="quick-pop shot" src="assets/quick-entry.webp" alt="Quick Entry panel with a title field and Start Recording button" width="840" height="342" loading="lazy">
-        <div class="phone-shell"><span class="btn-side" aria-hidden="true"></span><div class="screen"><img class="splash" src="assets/iphone-splash.webp" alt="" width="1320" height="2868" loading="lazy" aria-hidden="true"><img class="home" src="assets/iphone.webp" alt="Scribe Remote on iPhone: a nearby Mac ready to pair" width="1320" height="2868" loading="lazy"></div></div>
+        <div class="phone-shell"><span class="btn-side" aria-hidden="true"></span><div class="screen"><img class="splash" src="assets/iphone-splash.webp" alt="" width="1320" height="2868" loading="lazy" aria-hidden="true"><img class="home" src="assets/iphone-home.webp" alt="" width="1206" height="2622" loading="lazy" aria-hidden="true"><span class="tap" aria-hidden="true"></span><img class="pair" src="assets/iphone-pair.webp" alt="" width="1206" height="2622" loading="lazy" aria-hidden="true"><img class="ready" src="assets/iphone-ready.webp" alt="Scribe Remote on iPhone, paired and ready, with a Start recording button" width="1206" height="2622" loading="lazy"></div></div>
       </div>
     </div>
     <div class="also rise" style="margin-top:0"><a class="store" href="https://apps.apple.com/app/id6810974259"><img src="assets/app-store-badge.svg" alt="Download Scribe Remote on the App Store" width="144" height="48"></a><span>Scribe Remote is free.</span></div>
