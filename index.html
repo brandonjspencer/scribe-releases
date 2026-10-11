@@ -158,6 +158,19 @@
   .in .layer .pulse { animation: pulse 7s ease-out 1.2s infinite; }
   @keyframes tick { 0%, 30% { opacity: 0; } 34%, 86% { opacity: 1; } 90%, 100% { opacity: 0; } }
   @keyframes pulse { 0%, 26% { opacity: 0; transform: translate(-50%, -50%) scale(.4); } 30% { opacity: 1; transform: translate(-50%, -50%) scale(.9); } 40% { opacity: 0; transform: translate(-50%, -50%) scale(2.6); } 100% { opacity: 0; } }
+  .layer.ask .band { position: absolute; inset: 0; }
+  .layer.ask .b1 { clip-path: inset(5.2% 20% 90% 17.6%); transform: translateX(-12.6%); }
+  .layer.ask .b2 { clip-path: inset(5.2% 95% 90% 0); }
+  .layer.ask .caret2 { position: absolute; left: 5.1%; top: 6.1%; width: .15%; height: 2.9%; background: var(--orange-2); opacity: 0; }
+  .in .layer.ask .b2 { animation: asktype 13s steps(16, end) .6s infinite; }
+  .in .layer.ask .caret2 { animation: askcaret 13s steps(16, end) .6s infinite; }
+  .in .layer.ask .results { animation: askres 13s var(--ease) .6s infinite; }
+  .in .layer.ask .answer { animation: askans 13s var(--ease) .6s infinite; }
+  @keyframes asktype { 0%, 5% { clip-path: inset(5.2% 95% 90% 0); } 23%, 100% { clip-path: inset(5.2% 82.4% 90% 0); } }
+  @keyframes askcaret { 0% { opacity: 1; left: 5.1%; } 5% { left: 5.1%; } 23% { left: 17.8%; opacity: 1; } 28%, 100% { left: 17.8%; opacity: 0; } }
+  @keyframes askres { 0%, 26% { opacity: 0; } 29%, 93% { opacity: 1; } 96%, 100% { opacity: 0; } }
+  @keyframes askans { 0%, 40% { opacity: 0; clip-path: inset(0 0 100% 0); } 41% { opacity: 1; } 50%, 93% { opacity: 1; clip-path: inset(0 0 0 0); } 96%, 100% { opacity: 0; clip-path: inset(0 0 0 0); } }
+  html.static .layer.ask .answer { opacity: 1 !important; clip-path: none !important; animation: none !important; }
   .snap-stage { position: relative; max-width: 560px; margin: 0 auto; }
   .snap-stage .ring { position: absolute; left: 48.5%; top: 57%; width: 10%; aspect-ratio: 1.55; border-radius: 10px; transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--orange-2), 0 0 28px rgba(240,138,92,.6); opacity: 0; }
   .snap-stage .snapline { position: absolute; left: 50%; bottom: -46px; transform: translate(-50%, 12px); white-space: nowrap; font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); background: #15151a; border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 14px; box-shadow: 0 20px 40px rgba(0,0,0,.5); opacity: 0; }
@@ -353,6 +366,7 @@
     .rise, .hero h1 .w, .fade, .line { opacity: 1 !important; transform: none !important; }
     [data-scroll] { --p: 1 !important; }
     .stage-inner { transform: none !important; }
+    .layer.ask .answer, .layer .over { opacity: 1 !important; clip-path: none !important; animation: none !important; }
   }
 </style>
 </head>
@@ -501,7 +515,16 @@
       <h2>Ask anything you've ever discussed.</h2>
       <p class="sub">Every word is indexed on your Mac the moment it's spoken. Search by meaning. Get answers with citations.</p>
     </div>
-    <div class="visual" data-scroll="enter"><img class="shot grow" src="assets/ask.webp" alt="Ask your meetings: a search for “pricing decision” with matching transcript and minutes passages, each timestamped" width="2000" height="1440" loading="lazy"></div>
+    <div class="visual rise" data-scroll="enter">
+      <div class="layer ask grow shot-lg">
+        <img class="base" src="assets/ask-empty.webp" alt="" width="2000" height="1440" loading="lazy" aria-hidden="true">
+        <img class="band b1" src="assets/ask-results.webp" alt="" width="2000" height="1440" loading="lazy" aria-hidden="true">
+        <img class="band b2" src="assets/ask-results.webp" alt="" width="2000" height="1440" loading="lazy" aria-hidden="true">
+        <i class="caret2" aria-hidden="true"></i>
+        <img class="over results" src="assets/ask-results.webp" alt="Ask your meetings: a search for “pricing decision” with matching transcript and minutes passages, each timestamped" width="2000" height="1440" loading="lazy">
+        <img class="over answer" src="assets/ask-answer.webp" alt="Claude’s answer with numbered citations: the pricing decision is a flat per-seat price with 10,000 included events and a published overage rate" width="2000" height="1440" loading="lazy">
+      </div>
+    </div>
     <div class="notes rise"><span class="note">Local full-text + semantic search</span><span class="note">Answers on-device with Apple Intelligence or Ollama</span><span class="note">Or ask Claude</span></div>
   </div>
 </section>
