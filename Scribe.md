@@ -1,6 +1,4 @@
-## Scribe 0.16.0
+## Scribe 0.16.1
 
-- **Join & Record before your meetings.** A few minutes before a calendar meeting with a Zoom, Google Meet, Teams, or Webex link, a small card appears in the top-right corner: one click joins the call and starts a recording named after the meeting. Works with any calendar synced to your Mac, including Google. Lead time is adjustable in Settings → Recording Options.
-- **Zoom detection uses the same card.** When a Zoom meeting opens without a calendar event behind it, the record offer now appears as the same unobtrusive card instead of a pop-up dialog, and goes away on its own when the meeting ends.
-- **Use Scribe with OpenAI Codex.** Settings → Meeting Minutes Skill → "Install for Codex…" gives Codex CLI the same local meetings server Claude Desktop uses — your transcripts still never leave your Mac.
-- Fixed "name recordings after the current calendar event," which could not read your calendar before.
+- **Snapshots now confirm themselves.** Take a snapshot during a recording, from the camera button or from your iPhone, and a small card appears in the top-right corner with the captured image, the moment it was noted in the transcript, and a Show button that opens the file. If a capture fails, the card tells you why.
+- **Snapshots work in any meeting.** When there is no Zoom meeting window on screen, the snapshot captures your whole screen (every display) instead of doing nothing, so it works for Google Meet, Teams, a shared slide deck, or anything else you are looking at.
