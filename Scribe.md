@@ -1,4 +1,3 @@
-## Scribe 0.16.1
+## Scribe 0.16.2
 
-- **Snapshots now confirm themselves.** Take a snapshot during a recording, from the camera button or from your iPhone, and a small card appears in the top-right corner with the captured image, the moment it was noted in the transcript, and a Show button that opens the file. If a capture fails, the card tells you why.
-- **Snapshots work in any meeting.** When there is no Zoom meeting window on screen, the snapshot captures your whole screen (every display) instead of doing nothing, so it works for Google Meet, Teams, a shared slide deck, or anything else you are looking at.
+- **Share your minutes.** The Minutes Reader has a new Share button. Send minutes by email with one click (formatted body, file attached), open the macOS share sheet for Messages, AirDrop, Notes, or Slack, or copy them ready to paste: **Copy for Slack** formats headings, bullets, and action items the way Slack expects and brings Slack forward; **Copy as Rich Text** pastes cleanly into Gmail, Google Docs, or Notion; **Copy as Markdown** for everything else.
