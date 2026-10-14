@@ -1,3 +1,3 @@
-## Scribe 0.16.2
+## Scribe 0.16.3
 
-- **Share your minutes.** The Minutes Reader has a new Share button. Send minutes by email with one click (formatted body, file attached), open the macOS share sheet for Messages, AirDrop, Notes, or Slack, or copy them ready to paste: **Copy for Slack** formats headings, bullets, and action items the way Slack expects and brings Slack forward; **Copy as Rich Text** pastes cleanly into Gmail, Google Docs, or Notion; **Copy as Markdown** for everything else.
+- **The Zoom chat notice now appears when you use Join & Record.** With "Post a notice to the Zoom meeting chat when recording starts" turned on, Scribe now waits until you're actually in the meeting before posting the notice, instead of trying the moment the meeting link opens. It keeps trying for up to three minutes while Zoom finishes joining, while you wait to be let in, or while the chat panel opens, and it never posts the same notice twice. This also fixes the notice going missing when you start recording before you join a meeting. If you keep recording after one meeting ends and join another, the new meeting gets its own notice.
