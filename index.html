@@ -48,8 +48,14 @@
   .center { text-align: center; }
   .mono { font-family: var(--mono); }
 
-  .ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background: radial-gradient(1000px 700px at 70% -20%, rgba(223,85,47,.2), transparent 60%), radial-gradient(800px 600px at -10% 40%, rgba(240,138,92,.08), transparent 60%), radial-gradient(900px 700px at 50% 110%, rgba(240,138,92,.07), transparent 60%), var(--bg); }
+  .ambient { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+    background: radial-gradient(800px 600px at -10% 40%, rgba(240,138,92,.08), transparent 60%), radial-gradient(900px 700px at 50% 110%, rgba(240,138,92,.07), transparent 60%), var(--bg); }
+  /* The warm top glow, as a light that drifts after the cursor. Same falloff as the old static
+     gradient (1000x700 ellipse, clear at 60%), so at rest it looks exactly as before. Moved with
+     transforms only, so following the mouse never repaints the page. */
+  .ambient .light { position: absolute; left: 0; top: 0; width: 1200px; height: 840px; margin: -420px 0 0 -600px;
+    background: radial-gradient(closest-side, rgba(223,85,47,.2), rgba(223,85,47,.07) 55%, transparent); will-change: transform;
+    transform: translate3d(70vw, -20vh, 0); }
 
   /* ---------- nav ---------- */
   .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(16px); -webkit-backdrop-filter: saturate(140%) blur(16px); background: rgba(25,25,29,.55); border-bottom: 1px solid transparent; transition: border-color .3s, background .3s; }
@@ -382,7 +388,7 @@
 </style>
 </head>
 <body>
-<div class="ambient" aria-hidden="true"></div>
+<div class="ambient" aria-hidden="true"><div class="light"></div></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -738,6 +744,28 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]static\b/.test(location.search);
   if (/[?&]static\b/.test(location.search)) document.documentElement.classList.add('static');
   const clamp = (v) => Math.max(0, Math.min(1, v));
+
+  // Ambient light: the top glow eases toward the cursor and drifts home when it leaves.
+  // Mouse-and-trackpad only; touch devices and reduced motion keep the glow where it was.
+  const light = document.querySelector('.ambient .light');
+  if (light && !reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const home = () => ({ x: innerWidth * 0.7, y: innerHeight * -0.2 });
+    let pos = home(), target = home(), raf = 0, last = 0;
+    const place = () => { light.style.transform = `translate3d(${pos.x.toFixed(1)}px, ${pos.y.toFixed(1)}px, 0)`; };
+    const tick = (now) => {
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      const k = 1 - Math.exp(-dt * 4.5); // ~0.5 s glide: soft, never twitchy
+      pos.x += (target.x - pos.x) * k; pos.y += (target.y - pos.y) * k;
+      place();
+      if (Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > 0.5) raf = requestAnimationFrame(tick);
+      else { raf = 0; last = 0; }
+    };
+    const go = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    addEventListener('pointermove', (e) => { if (e.pointerType !== 'mouse') return; target = { x: e.clientX, y: e.clientY }; go(); }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { target = home(); go(); });
+    addEventListener('resize', () => { if (!raf) { pos = target = home(); place(); } });
+    place();
+  }
 
   // Hero waveform background
   const wb = document.getElementById('wavebg');
