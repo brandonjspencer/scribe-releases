@@ -3,14 +3,15 @@
     <channel>
         <title>Scribe</title>
         <item>
-            <title>0.17.0</title>
-            <pubDate>Tue, 03 Nov 2026 09:27:27 -0800</pubDate>
-            <sparkle:version>90</sparkle:version>
-            <sparkle:shortVersionString>0.17.0</sparkle:shortVersionString>
+            <title>0.17.1</title>
+            <pubDate>Tue, 03 Nov 2026 14:39:55 -0800</pubDate>
+            <sparkle:version>91</sparkle:version>
+            <sparkle:shortVersionString>0.17.1</sparkle:shortVersionString>
+            <sparkle:minimumAutoupdateVersion>91</sparkle:minimumAutoupdateVersion>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <sparkle:releaseNotesLink>https://brandonjspencer.github.io/scribe-releases/Scribe.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/brandonjspencer/scribe-releases/releases/download/v0.17.0/Scribe.dmg" length="145907541" type="application/octet-stream" sparkle:edSignature="JGjwtEncWLCPqztUhzmhm84WbrZUK7Z7CNY/7HUf9fTlTVW5yupDQprW+49o74BOLBVQ5E8STHm/VqDzDSE7BQ=="/>
+            <enclosure url="https://github.com/brandonjspencer/scribe-releases/releases/download/v0.17.1/Scribe.dmg" length="146005754" type="application/octet-stream" sparkle:edSignature="apxN1v6OwMThCozavTkjAdVgh35ucAU48OPjd3rJ7OgoY7SeNpVwtZnxnTCmKafRLGFoLgueZujAe3wSorJ3Dw=="/>
         </item>
     </channel>
 </rss>
