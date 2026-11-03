@@ -110,6 +110,12 @@
   .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
   .fineprint { font-size: 14px; color: var(--muted); margin-top: 18px; }
   .fineprint a { color: var(--ink-2); }
+  /* Not on a Mac (iPhone, iPad, Android, Windows): the download buttons become "Send to my Mac". */
+  .send-hint { display: none; font-size: 14.5px; color: var(--ink-2); margin: 16px auto 0; max-width: 420px; text-wrap: pretty; }
+  html.not-mac .send-hint { display: block; }
+  .send-panel { display: none; margin: 16px auto 0; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .send-panel.open { display: flex; }
+  .send-panel .btn { font-size: 15px; padding: 11px 20px; }
 
   .stage { position: relative; max-width: 980px; margin: 90px auto 0; perspective: 1600px; }
   .mac { position: relative; border-radius: 18px 18px 0 0; background: linear-gradient(170deg, #2a2a32, #1b1b20); border: 1px solid var(--line-strong); border-bottom: 0; min-height: 560px; box-shadow: 0 40px 100px rgba(0,0,0,.5); overflow: visible; }
@@ -410,7 +416,7 @@
   <div class="wrap">
     <div class="wave-bg" id="wavebg" aria-hidden="true"></div>
     <a class="eyebrow fade" href="https://github.com/brandonjspencer/scribe-releases/releases/latest"><span class="dot" aria-hidden="true"></span>New in 0.16 · Join &amp; Record</a>
-    <h1 id="headline">Every meeting, transcribed.<br class="d">Right on your Mac.</h1>
+    <h1 id="headline">Every meeting, transcribed. <br class="d">Right on your Mac.</h1>
     <p class="sub fade" style="animation-delay:.6s">Then handed to the AI you already have. <br class="d"><strong>No cloud. No bot in the call. No subscription.</strong></p>
     <div class="cta-row fade" style="animation-delay:.75s">
       <!-- Scribe-web.dmg is byte-identical to Scribe.dmg; the separate asset name gives
@@ -421,6 +427,7 @@
       </a>
       <a class="btn big ghost" href="#how">See how it works</a>
     </div>
+    <p class="send-hint fade" style="animation-delay:.85s">Scribe runs on Macs with Apple Silicon. Send yourself the link and download it there.</p>
     <div class="also fade" style="animation-delay:.95s"><span>Scribe Remote for your iPhone</span><a class="store sm" href="https://apps.apple.com/app/id6810974259"><img src="assets/app-store-badge.svg" alt="Download Scribe Remote on the App Store" width="120" height="40"></a></div>
 
     <div class="stage" data-scroll="enter" aria-hidden="true">
@@ -674,7 +681,7 @@
   <div class="wrap center">
     <div class="head rise">
       <div class="kicker">Privacy</div>
-      <h2>What leaves your Mac?<br class="d">Nothing you didn't send.</h2>
+      <h2>What leaves your Mac? <br class="d">Nothing you didn't send.</h2>
       <p class="sub">No account. No analytics in the app. No server of ours. Just signed updates, a license check, and the AI calls you turn on.</p>
     </div>
     <div class="priv">
@@ -910,6 +917,61 @@
       type();
     };
     setTimeout(addLine, box.dataset.typer ? 600 : 1200);
+  });
+})();
+</script>
+<script>
+// Visitors not on a Mac can't install Scribe here (and on an iPhone, tapping the DMG just drops
+// it into Files). Turn every download button into "Send to my Mac": the system share sheet
+// (AirDrop, Messages, Mail, Notes, Reminders), or copy/email when sharing isn't available.
+// Nothing is sent to or stored by us.
+(() => {
+  const ua = navigator.userAgent;
+  const iPad = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;  // iPadOS reports as a Mac
+  if (/Macintosh/.test(ua) && !iPad) return;
+  if (/bot|crawl|spider|preview/i.test(ua)) return;
+  document.documentElement.classList.add('not-mac');
+
+  const url = 'https://www.getscribe.pro/?ref=sendtomac';
+  const title = 'Scribe for Mac';
+  const text = 'Scribe: meetings transcribed on your Mac. Download it here:';
+  const count = (path) => { try { window.goatcounter && window.goatcounter.count({ path, title: path, event: true }); } catch (_) {} };
+  const sendIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
+
+  const panelFor = (btn) => {
+    const anchor = btn.closest('.cta-row') || btn;  // under the button row, or right under a lone button
+    let panel = anchor.nextElementSibling;
+    if (panel && panel.classList.contains('send-panel')) return panel;
+    panel = document.createElement('div');
+    panel.className = 'send-panel';
+    const mail = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(text + ' ' + url);
+    panel.innerHTML = '<button type="button" class="btn ghost" data-copy>Copy link</button><a class="btn ghost" href="' + mail + '">Email it to me</a>';
+    const copy = panel.querySelector('[data-copy]');
+    copy.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(url); copy.textContent = 'Link copied'; count('send-to-mac-copy'); }
+      catch (_) { copy.textContent = url; }
+    });
+    panel.querySelector('a').addEventListener('click', () => count('send-to-mac-email'));
+    anchor.insertAdjacentElement('afterend', panel);
+    return panel;
+  };
+
+  document.querySelectorAll('a.btn[href$="Scribe-web.dmg"]').forEach((a) => {
+    const small = a.classList.contains('small');
+    a.innerHTML = small ? 'Send to Mac' : sendIcon + 'Send to my Mac';
+    a.setAttribute('role', 'button');
+    a.addEventListener('click', async (e) => {
+      e.preventDefault();
+      count('send-to-mac');
+      if (navigator.share) {
+        try { await navigator.share({ title, text, url }); count('send-to-mac-shared'); return; }
+        catch (err) { if (err && err.name === 'AbortError') return; }
+      }
+      // The nav's small button has no room under it; open the hero's options instead.
+      const panel = panelFor(small ? (document.querySelector('.hero a.btn.big[href$="Scribe-web.dmg"]') || a) : a);
+      panel.classList.add('open');
+      if (small) panel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
   });
 })();
 </script>
